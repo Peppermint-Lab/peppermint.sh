@@ -129,30 +129,28 @@ const posts = [
 ];
 
 const stats = [
-  { label: "Transactions every 24 hours", value: "44 million" },
-  { label: "Assets under holding", value: "$119 trillion" },
-  { label: "New users annually", value: "46,000" },
+  { label: "Docker Pulls", value: "60k+" },
+  { label: "Github Stars", value: "700+" },
+  { label: "Active instances", value: "153" },
 ];
 
 const features = [
   {
-    name: "Push to deploy",
-    description:
-      "Commodo nec sagittis tortor mauris sed. Turpis tortor quis scelerisque diam id accumsan nullam tempus. Pulvinar etiam lacus volutpat eu. Phasellus praesent ligula sit faucibus.",
+    name: "Notifications",
+    description: "Hook up peppermint to third party services using webhooks and various third party providers alongside emails.",
     href: "#",
     icon: CloudArrowUpIcon,
   },
   {
-    name: "SSL certificates",
+    name: "Email Fetching",
     description:
-      "Pellentesque enim a commodo malesuada turpis eleifend risus. Facilisis donec placerat sapien consequat tempor fermentum nibh.",
+      "Set up mailbox's to allow your customers to email you directly and have it automatically create a ticket",
     href: "#",
     icon: LockClosedIcon,
   },
   {
-    name: "Simple queues",
-    description:
-      "Pellentesque sit elit congue ante nec amet. Dolor aenean curabitur viverra suspendisse iaculis eget. Nec mollis placerat ultricies euismod ut condimentum.",
+    name: "Single Sign On",
+    description: "Using keycloak, enable single sign on for all your users to allow for shared authentication via multiple providers.",
     href: "#",
     icon: ArrowPathIcon,
   },
@@ -323,15 +321,13 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
             <h2 className="text-base font-semibold leading-7 text-indigo-400">
-              Deploy faster
+            The core of your customer support
             </h2>
             <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Everything you need to deploy your app
+             Don't let requests go unseen
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-              Quis tellus eget adipiscing convallis sit sit eget aliquet quis.
-              Suspendisse eget egestas a elementum pulvinar et feugiat blandit
-              at. In mi viverra elit nunc.
+            A central location for your helpdesk Allowing you to have a complete picture of each customer, so you can offer the right support.
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
