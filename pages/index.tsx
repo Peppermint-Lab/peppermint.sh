@@ -1,64 +1,44 @@
 /* eslint-disable react/no-unescaped-entities */
-import { useState } from "react";
-import { Dialog } from "@headlessui/react";
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import {
-  ArrowPathIcon,
+  BellAlertIcon,
+  ChevronRightIcon,
   CloudArrowUpIcon,
+  GlobeEuropeAfricaIcon,
+  InboxIcon,
+  LightBulbIcon,
   LockClosedIcon,
+  UserIcon,
 } from "@heroicons/react/20/solid";
+import { Bars3Icon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
 const navigation = [
-  { name: "About Us", href: "#" },
-  { name: "Features", href: "#" },
-  { name: "Github", href: "#" },
-  { name: "Docs", href: "#" },
+  // { name: "About Us", href: "#" },
+  // { name: "Features", href: "#" },
+  { name: "Github", href: "https://github.com/Peppermint-Lab/peppermint" },
+  { name: "Docs", href: "https://docs.peppermint.sh/" },
 ];
 
 const footer = {
-  solutions: [
-    { name: "Self Hosted", href: "#" },
-    { name: "Github", href: "#" },
-    { name: "Docker", href: "#" },
+  // solutions: [
+  //   { name: "Self Hosted", href: "#" },
+  //   { name: "Linode", href: "" },
+  // ],
+  support: [
+    { name: "Documentation", href: "https://docs.peppermint.sh/" },
+    { name: "Discord", href: "https://discord.gg/fs4j39FWfm" },
   ],
-  support: [{ name: "Documentation", href: "#" }],
   company: [
     { name: "About", href: "#" },
     // { name: "Blog", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Investors", href: "#" },
-    { name: "Open", href: "#" },
+    // { name: "Press", href: "#" },
+    // { name: "Investors", href: "#" },
+    // { name: "Open", href: "#" },
   ],
   social: [
     {
-      name: "Facebook",
-      href: "#",
-      icon: (props: any) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            fillRule="evenodd"
-            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
-    },
-    {
-      name: "Instagram",
-      href: "#",
-      icon: (props: any) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            fillRule="evenodd"
-            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
-    },
-    {
       name: "Twitter",
-      href: "#",
+      href: "https://twitter.com/potts_dev",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
@@ -67,7 +47,7 @@ const footer = {
     },
     {
       name: "GitHub",
-      href: "#",
+      href: "https://github.com/Peppermint-Lab/peppermint/",
       icon: (props: any) => (
         <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
           <path
@@ -78,19 +58,19 @@ const footer = {
         </svg>
       ),
     },
-    {
-      name: "YouTube",
-      href: "#",
-      icon: (props: any) => (
-        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
-          <path
-            fillRule="evenodd"
-            d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
-            clipRule="evenodd"
-          />
-        </svg>
-      ),
-    },
+    // {
+    //   name: "YouTube",
+    //   href: "#",
+    //   icon: (props: any) => (
+    //     <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+    //       <path
+    //         fillRule="evenodd"
+    //         d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z"
+    //         clipRule="evenodd"
+    //       />
+    //     </svg>
+    //   ),
+    // },
   ],
 };
 
@@ -107,7 +87,7 @@ const posts = [
       role: "Content Creator / Youtuber",
       href: "https://www.youtube.com/@DBTechYT",
       imageUrl:
-        "https://yt3.googleusercontent.com/KHCwfnjb2xekyJWw0Gy4Z_K9zXf5tz8rhpcETZcFneF-FHoljzEx9WnYIAI0Hcet1VsCyji43A=s176-c-k-c0x00ffffff-no-rj",
+        "https://yt3.googleusercontent.com/RZiSgwDX07SVLpo6Vl1eSGIG07ws3tbgSyFY9XWn0nq9Y-NCxttzuONG4L6FRGehcdoOVoHYaw=s176-c-k-c0x00ffffff-no-rj",
     },
     embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/LORGa1zV2us" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
   },
@@ -130,30 +110,59 @@ const posts = [
 ];
 
 const stats = [
-  { label: "Docker Pulls", value: "60k+" },
-  { label: "Github Stars", value: "700+" },
-  { label: "Active instances", value: "153" },
+  { label: "Docker Pulls", value: "99k+" },
+  { label: "Github Stars", value: "1.1k" },
+  { label: "Weekly Active Users", value: "212" },
 ];
 
 const features = [
   {
     name: "Notifications",
-    description: "Hook up peppermint to third party services using webhooks and various third party providers alongside emails.",
+    description:
+      "Hook up peppermint to third party services using webhooks and various third party providers alongside emails.",
     href: "#",
-    icon: CloudArrowUpIcon,
+    icon: BellAlertIcon,
   },
   {
     name: "Email Fetching",
     description:
       "Set up mailbox's to allow your customers to email you directly and have it automatically create a ticket",
     href: "#",
-    icon: LockClosedIcon,
+    icon: InboxIcon,
   },
   {
     name: "Single Sign On",
-    description: "Using keycloak, enable single sign on for all your users to allow for shared authentication via multiple providers.",
+    description:
+      "Enable single sign on for all your users to allow for shared authentication via multiple providers.",
     href: "#",
-    icon: ArrowPathIcon,
+    icon: LockClosedIcon,
+  },
+];
+
+const features2 = [
+  {
+    name: "Location",
+    description:
+      "Peppermint can be hosted anywhere and all of its core features available without the need to access the internet.",
+    icon: GlobeEuropeAfricaIcon,
+  },
+  {
+    name: "Data Ownership",
+    description:
+      "Peppermint never transfers any customer app data to its servers. All data is stored locally on your server.",
+    icon: LockClosedIcon,
+  },
+  {
+    name: "Lightweight",
+    description:
+      "Peppermint is built to be lightweight and fast, allowing it to run on low end hardware and low usage. Reduce cost by hosting on a low end VPS or even a raspberry pi.",
+    icon: LightBulbIcon,
+  },
+  {
+    name: "Customer First",
+    description:
+      "Peppermint is developed with the customer in mind. Allowing us to offer the best features possible by listening to what our customers need.",
+    icon: UserIcon,
   },
 ];
 
@@ -208,7 +217,7 @@ export default function Home() {
             </a> */}
           </div>
         </nav>
-        <Dialog
+        {/* <Dialog
           as="div"
           className="lg:hidden"
           open={mobileMenuOpen}
@@ -247,50 +256,54 @@ export default function Home() {
                     </a>
                   ))}
                 </div>
-                {/* <div className="py-6">
+                <div className="py-6">
                   <a
                     href="#"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Log in
                   </a>
-                </div> */}
+                </div>
               </div>
             </div>
           </Dialog.Panel>
-        </Dialog>
+        </Dialog> */}
       </header>
 
       <div className="relative isolate overflow-hidden bg-white mx-auto max-w-7xl">
-        <div className="px-6 pb-24 pt-10 sm:pb-32 lg:flex lg:px-8 lg:py-40">
-          <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl lg:flex-shrink-0 lg:pt-8">
-            {/* <img
-            className="h-11"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          /> */}
-            {/* <div className="mt-24 sm:mt-32 lg:mt-16">
-            <a href="#" className="inline-flex space-x-6">
-              <span className="rounded-full bg-indigo-600/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-600 ring-1 ring-inset ring-indigo-600/10">
-                What's new
-              </span>
-              <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-600">
-                <span>Just shipped v1.0</span>
-                <ChevronRightIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-              </span>
-            </a>
-          </div> */}
-            <h1 className="mt-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              The Open Source Helpdesk solution
+        <div className="mx-auto max-w-2xl pb-32 pt-20">
+          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
+            <div className="mt-24 sm:mt-32 lg:mt-16">
+              <a
+                href="https://github.com/Peppermint-Lab/peppermint/releases"
+                className="inline-flex space-x-6"
+                target="_blank"
+              >
+                <span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
+                  What's new
+                </span>
+                <span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 ">
+                  <span>v0.4 shipped</span>
+                  <ChevronRightIcon
+                    className="h-5 w-5 text-gray-500"
+                    aria-hidden="true"
+                  />
+                </span>
+              </a>
+            </div>
+          </div>
+          <div className="text-center">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+              Control your customer support
             </h1>
             <p className="mt-6 text-lg leading-8 text-gray-600">
-              A central hub for your help desk. A powerful & easy system to
-              track, prioritise, and solve customer support tickets.
+              In a world of ever growing costs, Peppermint is here to help.
             </p>
-            <div className="mt-10 flex items-center gap-x-6">
+            <div className="mt-10 flex items-center justify-center gap-x-6">
               <a
-                href="#"
-                className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                href="https://docs.peppermint.sh/docker"
+                className="rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+                target="_blank"
               >
                 Get started
               </a>
@@ -302,19 +315,6 @@ export default function Home() {
               </a> */}
             </div>
           </div>
-          <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
-            <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-              <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                <img
-                  src="https://tailwindui.com/img/component-images/project-app-screenshot.png"
-                  alt="App screenshot"
-                  width={2432}
-                  height={1442}
-                  className="w-[76rem] rounded-md shadow-2xl ring-1 ring-gray-900/10"
-                />
-              </div>
-            </div>
-          </div>
         </div>
       </div>
 
@@ -322,13 +322,15 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:text-center">
             <h2 className="text-base font-semibold leading-7 text-indigo-400">
-            The core of your customer support
+              The core of your customer support
             </h2>
             <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-             Don't let requests go unseen
+              Don't let requests go unseen
             </p>
             <p className="mt-6 text-lg leading-8 text-gray-300">
-            A central location for your helpdesk Allowing you to have a complete picture of each customer, so you can offer the right support.
+              A central location for your helpdesk Allowing you to have a
+              complete picture of each customer, so you can offer the right
+              support.
             </p>
           </div>
           <div className="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
@@ -344,14 +346,6 @@ export default function Home() {
                   </dt>
                   <dd className="mt-4 flex flex-auto flex-col text-base leading-7 text-gray-300">
                     <p className="flex-auto">{feature.description}</p>
-                    <p className="mt-6">
-                      <a
-                        href={feature.href}
-                        className="text-sm font-semibold leading-6 text-indigo-400"
-                      >
-                        Learn more <span aria-hidden="true">→</span>
-                      </a>
-                    </p>
                   </dd>
                 </div>
               ))}
@@ -423,7 +417,7 @@ export default function Home() {
         </div>
       </div>
 
-      <section className="bg-gray-900 py-24 sm:py-32">
+      {/* <section className="bg-gray-900 py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto grid max-w-2xl grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             <div className="flex flex-col pb-10 sm:pb-16 lg:pb-0 lg:pr-8 xl:pr-20">
@@ -487,7 +481,39 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <div className="bg-gray-900 py-24 sm:py-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl lg:mx-0">
+            <h2 className="text-base font-semibold leading-7 text-indigo-400">
+              Everything you need
+            </h2>
+            <p className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Take back your control
+            </p>
+            <p className="mt-6 text-lg leading-8 text-gray-300">
+              Peppermint is a solution to the ever growing cost of todays
+              corprate world. Think of us as the costco of helpdesk software. In
+              a world of ever growing costs, Peppermint is here to help.
+            </p>
+          </div>
+          <dl className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 text-base leading-7 text-gray-300 sm:grid-cols-2 lg:mx-0 lg:max-w-none lg:gap-x-16">
+            {features2.map((feature) => (
+              <div key={feature.name} className="relative pl-9 flex-col flex">
+                <dt className="inline font-semibold text-white">
+                  <feature.icon
+                    className="absolute left-1 top-1 h-5 w-5 text-indigo-500"
+                    aria-hidden="true"
+                  />
+                  {feature.name}
+                </dt>{" "}
+                <dd className="inline">{feature.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+      </div>
 
       <div className="bg-white py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -498,18 +524,19 @@ export default function Home() {
             <div className="mt-6 flex flex-col gap-x-8 gap-y-20 lg:flex-row">
               <div className="lg:w-full lg:max-w-2xl lg:flex-auto">
                 <p className="text-xl leading-8 text-gray-600">
-                  Aliquet nec orci mattis amet quisque ullamcorper neque, nibh
-                  sem. At arcu, sit dui mi, nibh dui, diam eget aliquam. Quisque
-                  id at vitae feugiat egestas ac. Diam nulla orci at in viverra
-                  scelerisque eget. Eleifend egestas fringilla sapien.
+                  Peppermint sets out to bridge the gap between features and
+                  cost. t, Peppermint seeks to offer a robust and comprehensive
+                  array of tools, functionalities, and user experiences without
+                  burdening users with exorbitant expenses.
                 </p>
                 <p className="mt-10 max-w-xl text-base leading-7 text-gray-700">
-                  Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget
-                  risus enim. Mattis mauris semper sed amet vitae sed turpis id.
-                  Id dolor praesent donec est. Odio penatibus risus viverra
-                  tellus varius sit neque erat velit. Faucibus commodo massa
-                  rhoncus, volutpat. Dignissim sed eget risus enim. Mattis
-                  mauris semper sed amet vitae sed turpis id.
+                  The project's ethos lies in empowering users by providing a
+                  platform that doesn't compromise on quality and usability
+                  while maintaining a reasonable cost structure. This approach
+                  fosters inclusivity, allowing individuals and organizations
+                  with varying budgetary constraints to benefit from a
+                  feature-rich software solution without sacrificing performance
+                  or breaking the bank.
                 </p>
               </div>
               <div className="lg:flex lg:flex-auto lg:justify-center">
@@ -573,10 +600,12 @@ export default function Home() {
                         className="absolute left-1 top-1 h-5 w-5 text-indigo-500"
                         aria-hidden="true"
                       />
-                      AWS Ec2
+                      Hostinger VPS
                     </dt>
                     <dd className="">
-                      We offer an EC2 image that is pre configured with peppermint and set up through docker.
+                      Hostinger VPS offers peak performance with AMD CPU, and
+                      NVMe storage, competitive pricing, automatic backups, and
+                      manual snapshots.
                     </dd>
                   </div>
                 </dl>
@@ -599,7 +628,7 @@ export default function Home() {
               </div>
             </div>
             <img
-              src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
+              src="/dash.png"
               alt="Product screenshot"
               className="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-white/10 sm:w-[57rem] md:-ml-4 lg:-ml-0"
               width={2432}
@@ -616,11 +645,9 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8">
-              <img
-                className="h-7"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt="Company name"
-              />
+              <div>
+                <span className="text-8xl">🍵</span>
+              </div>
               <p className="text-sm leading-6 text-gray-600">
                 Aiming to bridge the gap of features and cost.
               </p>
@@ -639,7 +666,7 @@ export default function Home() {
             </div>
             <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
               <div className="md:grid md:grid-cols-2 md:gap-8">
-                <div>
+                {/* <div>
                   <h3 className="text-sm font-semibold leading-6 text-gray-900">
                     Solutions
                   </h3>
@@ -655,7 +682,7 @@ export default function Home() {
                       </li>
                     ))}
                   </ul>
-                </div>
+                </div> */}
                 <div className="mt-10 md:mt-0">
                   <h3 className="text-sm font-semibold leading-6 text-gray-900">
                     Support
