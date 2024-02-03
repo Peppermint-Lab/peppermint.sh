@@ -82,7 +82,7 @@ const footer = {
 	],
 };
 
-const videos = [
+const posts = [
 	{
 		id: 1,
 		title: "DB Tech's Alpha review 2022",
@@ -388,55 +388,55 @@ export default function Home() {
 						</p>
 					</div>
 					<div className="mx-auto mt-4 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 border-t border-gray-200 pt-5 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-						{videos.map((video) => (
+						{posts.map((post) => (
 							<article
-								key={video.id}
+								key={post.id}
 								className="flex max-w-xl flex-col items-start justify-between"
 							>
 								<div className="flex items-center gap-x-4 text-xs">
 									<time
-										dateTime={video.datetime}
+										dateTime={post.datetime}
 										className="text-gray-500"
 									>
-										{video.date}
+										{post.date}
 									</time>
 									{/* <a
-                    href={video.category.href}
+                    href={post.category.href}
                     className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
                   >
-                    {video.category.title}
+                    {post.category.title}
                   </a> */}
 								</div>
 								<div className="group relative">
 									<h3 className="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-										<a href={video.href}>
+										<a href={post.href}>
 											<span className="absolute inset-0" />
-											{video.title}
+											{post.title}
 										</a>
 									</h3>
 									<p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
 										<span
 											dangerouslySetInnerHTML={{
-												__html: video.embed,
+												__html: post.embed,
 											}}
 										></span>
 									</p>
 								</div>
 								<div className="relative mt-4 flex items-center gap-x-4">
 									<img
-										src={video.author.imageUrl}
+										src={post.author.imageUrl}
 										alt=""
 										className="h-10 w-10 rounded-full bg-gray-50"
 									/>
 									<div className="text-sm leading-6">
 										<p className="font-semibold text-gray-900">
-											<a href={video.author.href}>
+											<a href={post.author.href}>
 												<span className="absolute inset-0" />
-												{video.author.name}
+												{post.author.name}
 											</a>
 										</p>
 										<p className="text-gray-600">
-											{video.author.role}
+											{post.author.role}
 										</p>
 									</div>
 								</div>
