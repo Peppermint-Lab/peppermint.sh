@@ -9,13 +9,15 @@ import {
 	LockClosedIcon,
 	UserIcon,
 } from "@heroicons/react/20/solid";
-import { Bars3Icon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { Dialog, Disclosure, Popover, Transition } from "@headlessui/react";
+
 
 const navigation = [
-	// { name: "About Us", href: "#" },
+	{ name: "About Us", href: "#our_mission" },
 	// { name: "Features", href: "#" },
-	{ name: "Github", href: "https://github.com/Peppermint-Lab/peppermint" },
+	{ name: "GitHub", href: "https://github.com/Peppermint-Lab/peppermint" },
 	{ name: "Docs", href: "https://docs.peppermint.sh/" },
 ];
 
@@ -29,8 +31,8 @@ const footer = {
 		{ name: "Discord", href: "https://discord.gg/fs4j39FWfm" },
 	],
 	company: [
-		{ name: "About", href: "#" },
-		// { name: "Blog", href: "#" },
+		{ name: "About", href: "#our_mission" },
+		{ name: "Contact", href: "https://github.com/Peppermint-Lab" },
 		// { name: "Press", href: "#" },
 		// { name: "Investors", href: "#" },
 		// { name: "Open", href: "#" },
@@ -85,7 +87,7 @@ const footer = {
 const posts = [
 	{
 		id: 1,
-		title: "DB Tech's Alpha review 2022",
+		title: "Peppermint Ticket Management and Help Desk (Alpha) | And My Container Discovery Process",
 		href: "https://www.youtube.com/watch?v=LORGa1zV2us",
 		description: "",
 		date: "8th Feb 2022",
@@ -97,23 +99,23 @@ const posts = [
 			imageUrl:
 				"https://yt3.googleusercontent.com/RZiSgwDX07SVLpo6Vl1eSGIG07ws3tbgSyFY9XWn0nq9Y-NCxttzuONG4L6FRGehcdoOVoHYaw=s176-c-k-c0x00ffffff-no-rj",
 		},
-		embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/LORGa1zV2us" title="DB Tech - DB Tech's Alpha review 2022" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+		embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/LORGa1zV2us" title="DB Tech - Peppermint Ticket Management and Help Desk (Alpha) | And My Container Discovery Process" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
 	},
 	{
 		id: 2,
-		title: "Host your own HelpDesk",
+		title: "host your own HelpDesk",
 		href: "https://youtu.be/Kq0BMVhbFkA",
 		description: "",
 		date: "30th Mar 2023 ",
 		datetime: "2023-03-30",
 		author: {
-			name: "DB Tech",
+			name: "NetworkChuck",
 			role: "Content Creator / Youtuber",
-			href: "https://www.youtube.com/@DBTechYT",
+			href: "https://www.youtube.com/@NetworkChuck",
 			imageUrl:
 				"https://yt3.googleusercontent.com/ytc/AL5GRJW5XsaEbRr2gFUPOzr8i0iVyS7vihYNp0sAKXsrBA=s176-c-k-c0x00ffffff-no-rj",
 		},
-		embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/Kq0BMVhbFkA" title="DB Tech - Host your own HelpDesk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+		embed: `<iframe width="560" height="315" src="https://www.youtube.com/embed/Kq0BMVhbFkA" title="NetworkChuck - host your own HelpDesk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
 	},
 ];
 
@@ -128,21 +130,18 @@ const features = [
 		name: "Notifications",
 		description:
 			"Connect Peppermint to third party services using webhooks and third party providers alongside traditional email traffic.",
-		href: "#",
 		icon: BellAlertIcon,
 	},
 	{
 		name: "Email Fetching",
 		description:
 			"Set up mailboxes to allow direct messages from customers and create a ticket automatically.",
-		href: "#",
 		icon: InboxIcon,
 	},
 	{
-		name: "Single Sign On",
+		name: "Single Sign-On",
 		description:
-			"Enable <span>single sign on<span> for all your users to allow for streamlined user onboarding.",
-		href: "#",
+			"Enable single sign-on for all your users to allow for streamlined user onboarding.",
 		icon: LockClosedIcon,
 	},
 ];
@@ -161,9 +160,9 @@ const features2 = [
 		icon: LockClosedIcon,
 	},
 	{
-		name: "Lightweight",
+		name: "Utilization",
 		description:
-			"Peppermint is built to be lightweight and fast, allowing it to run on low-end hardware. Reduce cost by hosting on a low end VPS or even a Raspberry Pi.",
+			"Peppermint is built to be lightweight and fast, allowing it to run on low-end hardware. Reduce cost further by hosting on a low-end VPS or a Raspberry Pi.",
 		icon: LightBulbIcon,
 	},
 	{
@@ -178,7 +177,7 @@ export default function Home() {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 	return (
-		<div className="">
+		<div>
 			<header className="bg-white mx-auto max-w-7xl">
 				<nav
 					className="flex items-center justify-between p-6 lg:px-8"
@@ -189,14 +188,12 @@ export default function Home() {
 							href="#"
 							className="-m-1.5 p-1.5"
 						>
-							<span className="sr-only">Peppermint Labs</span>
-							{/* <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              /> */}
+							<span className="sr-only">Peppermint</span>
 							<span className="font-bold text-2xl">
-								🍵 Peppermint Labs
+								🍵 Peppermint{" "}
+								<span className=" text-xs italic text-slate-400 hover:text-green-500">
+									by Peppermint Labs
+								</span>
 							</span>
 						</a>
 					</div>
@@ -204,7 +201,7 @@ export default function Home() {
 						<button
 							type="button"
 							className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-							onClick={() => setMobileMenuOpen(true)}
+							onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
 						>
 							<span className="sr-only">Open main menu</span>
 							<Bars3Icon
@@ -218,7 +215,7 @@ export default function Home() {
 							<a
 								key={item.name}
 								href={item.href}
-								className="text-sm font-semibold leading-6 text-gray-900"
+								className="text-sm font-semibold leading-6 text-gray-900 hover:underline hover:decoration-dotted hover:decoration-green-500"
 							>
 								{item.name}
 							</a>
@@ -233,57 +230,52 @@ export default function Home() {
             </a> */}
 					</div>
 				</nav>
-				{/* <Dialog
-          as="div"
-          className="lg:hidden"
-          open={mobileMenuOpen}
-          onClose={setMobileMenuOpen}
-        >
-          <div className="fixed inset-0 z-10" />
-          <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
-            <div className="flex items-center justify-between">
-              <a href="#" className="-m-1.5 p-1.5">
-                <span className="sr-only">Your Company</span>
-                <img
-                  className="h-8 w-auto"
-                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                  alt=""
-                />
-              </a>
-              <button
-                type="button"
-                className="-m-2.5 rounded-md p-2.5 text-gray-700"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                <span className="sr-only">Close menu</span>
-                <XMarkIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
-            </div>
-            <div className="mt-6 flow-root">
-              <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
-                  {navigation.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                    >
-                      {item.name}
-                    </a>
-                  ))}
-                </div>
-                <div className="py-6">
-                  <a
-                    href="#"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Log in
-                  </a>
-                </div>
-              </div>
-            </div>
-          </Dialog.Panel>
-        </Dialog> */}
+				<Dialog
+					as="div"
+					className="lg:hidden"
+					open={mobileMenuOpen}
+					onClose={setMobileMenuOpen}
+				>
+					<div className="fixed inset-0 z-10" />
+					<Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+						<div className="flex items-center justify-between">
+							<button
+								type="button"
+								className="-m-2.5 rounded-md p-2.5 text-gray-700"
+								onClick={() => setMobileMenuOpen(false)}
+							>
+								<span className="sr-only">Close menu</span>
+								<XMarkIcon
+									className="h-6 w-6"
+									aria-hidden="true"
+								/>
+							</button>
+						</div>
+						<div className="mt-6 flow-root">
+							<div className="-my-6 divide-y divide-gray-500/10">
+								<div className="space-y-2 py-6">
+									{navigation.map((item) => (
+										<a
+											key={item.name}
+											href={item.href}
+											className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-green-50 hover:underline hover:decoration-dotted hover:decoration-green-500"
+										>
+											{item.name}
+										</a>
+									))}
+								</div>
+								{/* <div className="py-6">
+									<a
+										href="#"
+										className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+									>
+										Log in
+									</a>
+								</div> */}
+							</div>
+						</div>
+					</Dialog.Panel>
+				</Dialog>
 			</header>
 
 			<div className="relative isolate overflow-hidden bg-white mx-auto max-w-7xl">
@@ -299,13 +291,13 @@ export default function Home() {
 									className="inline-flex space-x-6"
 									target="_blank"
 								>
-									<span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 ring-1 ring-inset ring-indigo-500/20">
+									<span className="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-indigo-400 hover:text-blue-800 ring-1 ring-inset ring-indigo-500/20">
 										What's new
 									</span>
-									<span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 ">
+									<span className="inline-flex items-center space-x-2 text-sm font-medium leading-6 text-gray-500 hover:text-green-500">
 										<span>v0.4 shipped</span>
 										<ChevronRightIcon
-											className="h-5 w-5 text-gray-500"
+											className="h-5 w-5 "
 											aria-hidden="true"
 										/>
 									</span>
@@ -446,72 +438,6 @@ export default function Home() {
 				</div>
 			</div>
 
-			{/* <section className="bg-gray-900 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto grid max-w-2xl grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-            <div className="flex flex-col pb-10 sm:pb-16 lg:pb-0 lg:pr-8 xl:pr-20">
-              <img
-                className="h-12 self-start"
-                src="https://tailwindui.com/img/logos/tuple-logo-white.svg"
-                alt=""
-              />
-              <figure className="mt-10 flex flex-auto flex-col justify-between">
-                <blockquote className="text-lg leading-8 text-white">
-                  <p>
-                    “Amet amet eget scelerisque tellus sit neque faucibus non
-                    eleifend. Integer eu praesent at a. Ornare arcu gravida
-                    natoque erat et cursus tortor consequat at. Vulputate
-                    gravida sociis enim nullam ultricies habitant malesuada
-                    lorem ac. Tincidunt urna dui pellentesque sagittis.”
-                  </p>
-                </blockquote>
-                <figcaption className="mt-10 flex items-center gap-x-6">
-                  <img
-                    className="h-14 w-14 rounded-full bg-gray-800"
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                  <div className="text-base">
-                    <div className="font-semibold text-white">Judith Black</div>
-                    <div className="mt-1 text-gray-400">CEO of Tuple</div>
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-            <div className="flex flex-col border-t border-white/10 pt-10 sm:pt-16 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 xl:pl-20">
-              <img
-                className="h-12 self-start"
-                src="https://tailwindui.com/img/logos/reform-logo-white.svg"
-                alt=""
-              />
-              <figure className="mt-10 flex flex-auto flex-col justify-between">
-                <blockquote className="text-lg leading-8 text-white">
-                  <p>
-                    “Excepteur veniam labore ullamco eiusmod. Pariatur consequat
-                    proident duis dolore nulla veniam reprehenderit nisi officia
-                    voluptate incididunt exercitation exercitation elit. Nostrud
-                    veniam sint dolor nisi ullamco.”
-                  </p>
-                </blockquote>
-                <figcaption className="mt-10 flex items-center gap-x-6">
-                  <img
-                    className="h-14 w-14 rounded-full bg-gray-800"
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                  <div className="text-base">
-                    <div className="font-semibold text-white">
-                      Joseph Rodriguez
-                    </div>
-                    <div className="mt-1 text-gray-400">CEO of Reform</div>
-                  </div>
-                </figcaption>
-              </figure>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
 			<div className="bg-gray-900 py-24 sm:py-32">
 				<div className="mx-auto max-w-7xl px-6 lg:px-8">
 					<div className="mx-auto max-w-2xl lg:mx-0">
@@ -549,7 +475,10 @@ export default function Home() {
 				</div>
 			</div>
 
-			<div className="bg-white py-32">
+			<div
+				className="bg-white py-32"
+				id="our_mission"
+			>
 				<div className="mx-auto max-w-7xl px-6 lg:px-8">
 					<div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
 						<h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
@@ -691,7 +620,7 @@ export default function Home() {
 					id="footer-heading"
 					className="sr-only"
 				>
-					Footer
+					Peppermint
 				</h2>
 				<div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
 					<div className="xl:grid xl:grid-cols-3 xl:gap-8">
@@ -723,24 +652,7 @@ export default function Home() {
 						</div>
 						<div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
 							<div className="md:grid md:grid-cols-2 md:gap-8">
-								{/* <div>
-                  <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                    Solutions
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {footer.solutions.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div> */}
-								<div className="mt-10 md:mt-0">
+								<div className="mt-6 md:mt-0">
 									<h3 className="text-sm font-semibold leading-6 text-gray-900">
 										Support
 									</h3>
@@ -752,7 +664,7 @@ export default function Home() {
 											<li key={item.name}>
 												<a
 													href={item.href}
-													className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+													className="text-sm leading-6 text-gray-600 hover:text-gray-900 hover:underline hover:decoration-dotted hover:decoration-green-500"
 												>
 													{item.name}
 												</a>
@@ -774,7 +686,7 @@ export default function Home() {
 											<li key={item.name}>
 												<a
 													href={item.href}
-													className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+													className="text-sm leading-6 text-gray-600 hover:text-gray-900 hover:underline hover:decoration-dotted hover:decoration-green-500"
 												>
 													{item.name}
 												</a>
@@ -791,7 +703,7 @@ export default function Home() {
 							reserved. This site is licensed under the{" "}
 							<a
 								href="https://mit-license.org/"
-								class="underline decoration-dotted"
+								className="underline decoration-dotted"
 							>
 								MIT License
 							</a>
