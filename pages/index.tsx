@@ -184,6 +184,7 @@ export default function Home() {
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                 alt=""
               /> */}
+              <span role="img" aria-label="Logo" className="font-bold text-2xl">🍵</span>
               <span className="font-bold text-2xl">🍵 Peppermint Labs</span>
             </a>
           </div>
